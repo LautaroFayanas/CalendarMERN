@@ -42,3 +42,13 @@ body{
     outline: none;
     padding: 10px;
 }
+
+.fab{
+    border-radius: 50px;
+    bottom: 25px;
+    font-size:  30px;
+    padding: 15px;
+    position: fixed;
+    right: 25px;
+    
+}
