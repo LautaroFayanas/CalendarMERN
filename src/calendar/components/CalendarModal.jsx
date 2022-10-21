@@ -6,6 +6,8 @@ import es from 'date-fns/locale/es';
 import ReactModal from "react-modal"
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { useUiStore } from "../../hooks/useUiStore";
+
 
 registerLocale('es', es)
 
@@ -25,8 +27,7 @@ const customStyles = {
 ReactModal.setAppElement('#root');
 
 export const CalendarModal = () => {
-
-    const [isOpen, setIsOpen] = useState(true);
+    const { isDateModalOpen , closeDateModal } = useUiStore()
     const [formSubmited, setFormSubmited] = useState(false);
     const [formValues, setFormValues] = useState({
         title: 'Lautaro',
@@ -57,7 +58,7 @@ export const CalendarModal = () => {
     }
 
     const onCloseModal = () => {
-        setIsOpen(false);
+        closeDateModal()
     }
 
     const onSubmit = ( e ) => {
@@ -77,8 +78,8 @@ export const CalendarModal = () => {
 
     return (
         <ReactModal
-            isOpen={isOpen}
-            onRequestClose={onCloseModal}
+            isOpen={ isDateModalOpen }
+            onRequestClose={ onCloseModal }
             style={customStyles}
             className='modal'
             overlayClassName='modal-fondo'

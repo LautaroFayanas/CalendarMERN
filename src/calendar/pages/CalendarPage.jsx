@@ -4,6 +4,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { NavBar , CalendarEvent , CalendarModal } from "../";
 import { addHours } from "date-fns";
 import { localizer , getMessages } from "../../helpers";
+import { useUiStore } from "../../hooks";
 
 
 const events = [{
@@ -21,6 +22,8 @@ const events = [{
 
 export const CalendarPage = () => {
 
+  const { openDateModal } = useUiStore()
+
   const eventStyleGetter = ( event , start , end , isSelected ) => {
 
     const style = {
@@ -37,7 +40,7 @@ export const CalendarPage = () => {
   }
 
   const onDoubleClick = ( event ) => {
-    console.log('hola click' , event);
+    openDateModal();
   }
 
   const onSelect = ( event ) => {
